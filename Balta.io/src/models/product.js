@@ -1,36 +1,46 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const product = new Schema({
-    title: { //schema cria o _id(guid) automaticamente
-        type: String,
-        required: true, //obrigatÛrio
-        trim: true  //remove os espaÁos antes e depois da strimg 
-    },
-    slug: { //compıe a url -> cadeira gamer = cadeira-gamer
-        type: String,
-        required: [true, 'o slug È obrigatÛrio'],
-        trim: true,
-        index: true, //indice que ser· usado na busca
-        unique: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    price: {
-        type: Number,
-        required: true
-    },
-    active: {
-        type: Boolean,
-        required: true,
-        default: true //Default do valor
-    },
-    tags: [{ //Isso permite que tags seja um array de strings
-        type: String,
-        required: true
-    }]
+  title: {
+    //schema cria o _id(guid) automaticamente
+    type: String,
+    required: true, //obrigat√≥rio
+    trim: true //remove os espa√ßos antes e depois da string
+  },
+  slug: {
+    //comp√µe a url -> cadeira gamer = cadeira-gamer
+    type: String,
+    required: [true, "o slug √© obrigat√≥rio"],
+    trim: true,
+    index: true, //indice que ser√° usado na busca
+    unique: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  active: {
+    type: Boolean,
+    required: true,
+    default: true //Default do valor
+  },
+  tags: [
+    {
+      //Isso permite que tags seja um array de strings
+      type: String,
+      required: true
+    }
+  ],
+  image: {
+    type: String, //Guardaremos apenas o caminho da imagem
+    required: false,
+    trim: true
+  }
 });
 
-module.exports = mongoose.model('Product', product);
+module.exports = mongoose.model("Product", product);
